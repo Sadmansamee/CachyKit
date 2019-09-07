@@ -1,6 +1,6 @@
 import UIKit
 
-public class ExpirableObject: NSObject, NSCoding {
+public class CachyObject: NSObject, NSCoding {
     // MARK: - Singleton properties
 
     // MARK: - Static properties
@@ -43,7 +43,7 @@ public class ExpirableObject: NSObject, NSCoding {
     public init(value: AnyObject, key: String, expirationDate: Date? = nil) {
         self.value = value
         self.key = key
-        self.expirationDate = expirationDate ?? ExpirableCache.shared.expiration.date
+        self.expirationDate = expirationDate ?? Cachy.shared.expiration.date
 
         super.init()
     }

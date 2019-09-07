@@ -13,7 +13,7 @@ class BoardCell: UICollectionViewCell {
     @IBOutlet var imageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        containerView.layer.cornerRadius = 6
+        containerView.layer.cornerRadius = 8
         containerView.layer.masksToBounds = true
     }
 

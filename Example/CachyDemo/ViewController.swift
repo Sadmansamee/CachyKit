@@ -9,10 +9,10 @@
 import UIKit
 
 class ViewController: UICollectionViewController {
-    let cachy = Cachy()
+    let cachy = CachyLoader()
 
     var boards: [Board] = [Board]()
-    let cellSizes: [CGFloat] = [240, 170, 190, 220]
+    let cellSizes: [CGFloat] = [240, 180, 200, 220,230]
 
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()

@@ -77,7 +77,7 @@ public extension UIImageView {
         if isShowLoading {
             showLoading()
         }
-        let loader = Cachy()
+        let loader = CachyLoader()
         loader.load(url: url) { [weak self] data, url in
             if isShowLoading {
                 self?.hideLoading()
