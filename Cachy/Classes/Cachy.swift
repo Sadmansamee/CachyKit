@@ -1,6 +1,5 @@
 import UIKit
 
-
 public enum Operations: Swift.Error {
     case fetchFail
     case deletaFail
@@ -8,7 +7,6 @@ public enum Operations: Swift.Error {
     case loadFail
     case folderCreation
 }
-
 
 public enum ExpiryDate {
     case never
@@ -37,7 +35,6 @@ public enum ExpiryDate {
         }
     }
 
-   
     private func date(afterDays days: Int) -> Date {
         return Calendar.current.date(byAdding: .day, value: days, to: Date()) ?? Date()
     }
@@ -53,7 +50,6 @@ public enum ExpiryDate {
 }
 
 public class Cachy: NSCache<AnyObject, AnyObject> {
-
     public static var shared: Cachy {
         struct Static {
             static var instance = Cachy() {
@@ -224,13 +220,29 @@ public class Cachy: NSCache<AnyObject, AnyObject> {
             let paths = try fileManager.contentsOfDirectory(atPath: fileDir)
 
             for path in paths {
+//                if let object = NSKeyedUnarchiver.unarchiveObject(withFile: fileDir + path) as? CachyObject {
+//                    if !object.isExpired {
+//                        add(object: object)
+//                    } else {
+//                        try? fileManager.removeItem(atPath: fileDir + path)
+//                    }
+//                }
 
-               if let nsdata = NSData(contentsOfFile: fileDir + path), let object = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(Data(referencing: nsdata)) as? CachyObject {
-              //  if let object = NSKeyedUnarchiver.unarchiveObject(withFile: fileDir + path) as? CachyObject {
-                    if !object.isExpired {
-                        add(object: object)
-                    } else {
-                        try? fileManager.removeItem(atPath: fileDir + path)
+                if #available(iOS 11.0, *) {
+                    if let nsdata = NSData(contentsOfFile: fileDir + path), let object = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(Data(referencing: nsdata)) as? CachyObject {
+                        if !object.isExpired {
+                            add(object: object)
+                        } else {
+                            try? fileManager.removeItem(atPath: fileDir + path)
+                        }
+                    }
+                } else {
+                    if let object = NSKeyedUnarchiver.unarchiveObject(withFile: fileDir + path) as? CachyObject {
+                        if !object.isExpired {
+                            add(object: object)
+                        } else {
+                            try? fileManager.removeItem(atPath: fileDir + path)
+                        }
                     }
                 }
             }
@@ -263,10 +275,16 @@ public class Cachy: NSCache<AnyObject, AnyObject> {
             let fileName = fileDirectory.appendingPathComponent(convertedFileName)
 
             if !fileManager.fileExists(atPath: fileName.absoluteString) || object.isUpdated {
-                //let data = NSKeyedArchiver.archivedData(withRootObject: object)
-                let data = try? NSKeyedArchiver.archivedData(withRootObject: object, requiringSecureCoding: true)
+                //  let data = NSKeyedArchiver.archivedData(withRootObject: object)
+                //  try? data.write(to: fileName)
 
-                try? data?.write(to: fileName)
+                if #available(iOS 11.0, *) {
+                    let data = try? NSKeyedArchiver.archivedData(withRootObject: object, requiringSecureCoding: true)
+                    try? data?.write(to: fileName)
+                } else {
+                    let data = try? NSKeyedArchiver.archivedData(withRootObject: object)
+                    try? data?.write(to: fileName)
+                }
             }
         } catch {
             throw Operations.saveFail
