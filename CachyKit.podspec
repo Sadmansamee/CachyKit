@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
 s.platform = :ios
 s.ios.deployment_target = '10'
 s.name = "CachyKit"
-s.summary = "Caching Library written in Swift."
+s.summary = "A Caching Library is written in Swift that can cache JSON, Image, Zip or AnyObject with expiry date and force refresh."
 s.requires_arc = true
 
 # 2
