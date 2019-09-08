@@ -1,8 +1,8 @@
 # Cachy
 
-# Description
+## Description
  
-Nice threadsafe On-Disk/On-Memory expirable cache. Supports single object expire date, UIImageView extension.
+Nice threadsafe On-Disk/On-Memory expirable cache extended from [NSCache](https://developer.apple.com/documentation/foundation/nscache). Supports single object expire date, UIImageView extension.
 
 ## Installation
 
@@ -19,6 +19,19 @@ then run
 $ pod install
 ```
 
+## Features
+
+- [x] Asynchronous data downloading and caching.
+- [x] Asynchronous image downloading, caching and showing
+- [x] Expiry date/time for all the object
+- [x] Multiple-layer hybrid cache for both memory and disk.
+- [x] Fine control on cache behavior. Customizable expiration date and size limit.
+- [x] Independent components. Use the downloader, caching system separately as you need.
+- [x] Prefetching images and showing them from cache to boost your app.
+- [x] View extensions for `UIImageView`
+- [x] Indicator while loading images.
+
+
 ## Usage
 If you want to download and cache a file(JSON, ZIP, UIImage or any type) then simply
 
@@ -26,8 +39,8 @@ If you want to download and cache a file(JSON, ZIP, UIImage or any type) then si
  let cachy = CachyLoader()
 
  cachy.load(url: URL(string: "http://your_url_here")!) { [weak self] data, _ in
-           // Do whatever you need with the data object
-        }
+    // Do whatever you need with the data object
+ }
 ```
 if you want set expiry date for each object 
 
@@ -38,8 +51,8 @@ let cachy = CachyLoader()
 //(optional) you can set **expirationDate** according to your need
 
 cachy.load(url: URL(string: "http://your_url_here")!,isRefresh = false,expirationDate = ExpiryDate.everyDay.expiryDate()) { [weak self] data, _ in
-           // Do whatever you need with the data object
-        }
+     // Do whatever you need with the data object
+  }
 ```
 
 **CachyLoader** has also UIImageView extension.
@@ -119,7 +132,7 @@ Cachy.shared.add(object: object)
 let string: String? = Cachy.shared.get(forKey: "key")
 ```
 
-### Contact
+## Contact
 
 Follow and contact me on [Twitter](http://twitter.com/sameesadman). If you find an issue, just [open a ticket](https://github.com/sadmansamee/Cachy/issues/new). Pull requests are warmly welcome as well.
 
@@ -130,5 +143,3 @@ If you want fix anything or improve or add any new feature you are very much wel
 ### License
 
 Cachy is released under the MIT license. See LICENSE for details.
-
-
