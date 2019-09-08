@@ -9,12 +9,16 @@ Nice threadsafe On-Disk/On-Memory expirable cache extended from [NSCache](https:
 ### Cocoapods
 
 **SKCache** is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+it, simply add the following line to your Podfile: 
 
 ```ruby
 pod 'Cachy'
 ```
 then run 
+
+```
+$ pod repo update
+```
 ```
 $ pod install
 ```
@@ -143,3 +147,5 @@ If you want fix anything or improve or add any new feature you are very much wel
 ### License
 
 Cachy is released under the MIT license. See LICENSE for details.
+
+

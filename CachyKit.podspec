@@ -3,8 +3,8 @@ Pod::Spec.new do |s|
 # 1
 s.platform = :ios
 s.ios.deployment_target = '12.2'
-s.name = "Cachy"
-s.summary = "RWPickFlavor lets a user select an ice cream flavor."
+s.name = "CachyKit"
+s.summary = "Caching Library written in Swift."
 s.requires_arc = true
 
 # 2
