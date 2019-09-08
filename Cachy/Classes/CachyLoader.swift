@@ -19,7 +19,7 @@ open class CachyLoaderManager {
         return instance
     }()
 
-    fileprivate var cache: NSCache<NSString, AnyObject>!
+    fileprivate var cache: Cachy
     fileprivate var fetchList: [String: CachyCallbackList] = [:]
     fileprivate var fetchListOperationQueue: DispatchQueue = DispatchQueue(label: "cachy.awesome.fetchlist_queue", attributes: DispatchQueue.Attributes.concurrent)
     // fileprivate var imageDecodeQueue: DispatchQueue = DispatchQueue(label: "cachy.awesome.decode_queue", attributes: DispatchQueue.Attributes.concurrent)
@@ -33,8 +33,12 @@ open class CachyLoaderManager {
 //    fileprivate var timeoutIntervalForRequest: Double!
 //    fileprivate var diskPath: String!
 
-    func configure(memoryCapacity: Int = 30 * 1024 * 1024, diskCapacity: Int = 30 * 1024 * 1024, maxConcurrentOperationCount: Int = 10, timeoutIntervalForRequest: Double = 3, diskPath: String = "temp") {
+    func configure(memoryCapacity: Int = 30 * 1024 * 1024, diskCapacity: Int = 30 * 1024 * 1024, maxConcurrentOperationCount: Int = 10, timeoutIntervalForRequest: Double = 3, diskPath: String = "temp",expiryDate: ExpiryDate = .everyWeek,isOnlyInMemory: Bool = true) {
+       
         cache.totalCostLimit = memoryCapacity
+        cache.expiration = expiryDate
+        Cachy.isOnlyInMemory = isOnlyInMemory
+       
         sessionQueue = OperationQueue()
         sessionQueue.maxConcurrentOperationCount = maxConcurrentOperationCount
         sessionQueue.name = "cachy.awesome.session"
@@ -47,9 +51,9 @@ open class CachyLoaderManager {
                                                  diskPath: diskPath)
     }
 
-    private init(memoryCapacity: Int = 30 * 1024 * 1024, diskCapacity: Int = 30 * 1024 * 1024, maxConcurrentOperationCount: Int = 10, timeoutIntervalForRequest: Double = 3, diskPath: String = "temp") {
-        cache = NSCache()
-        configure(memoryCapacity: memoryCapacity, diskCapacity: diskCapacity, maxConcurrentOperationCount: maxConcurrentOperationCount, timeoutIntervalForRequest: timeoutIntervalForRequest, diskPath: diskPath)
+    private init(memoryCapacity: Int = 30 * 1024 * 1024, diskCapacity: Int = 30 * 1024 * 1024, maxConcurrentOperationCount: Int = 10, timeoutIntervalForRequest: Double = 3, diskPath: String = "temp",expiryDate: ExpiryDate = .everyWeek) {
+        cache = Cachy()
+        configure(memoryCapacity: memoryCapacity, diskCapacity: diskCapacity, maxConcurrentOperationCount: maxConcurrentOperationCount, timeoutIntervalForRequest: timeoutIntervalForRequest, diskPath: diskPath,expiryDate: expiryDate)
     }
 }
 
@@ -111,15 +115,12 @@ extension CachyLoader {
         return cacheKey
     }
 
-    fileprivate func imageFromFastCache(cacheKey: String) -> UIImage? {
-        return CachyLoaderManager.shared.cache.object(forKey: cacheKey as NSString) as? UIImage
-    }
-
     fileprivate func dataFromFastCache(cacheKey: String) -> Data? {
-        return CachyLoaderManager.shared.cache.object(forKey: cacheKey as NSString) as? Data
+        return CachyLoaderManager.shared.cache.get(forKey: cacheKey)
+        //return CachyLoaderManager.shared.cache.object(forKey: cacheKey as NSString) as? Data
     }
 
-    public func load(urlRequest: URLRequest, isRefresh: Bool = false, callback: @escaping CachyCallback) {
+    public func loadWith(urlRequest: URLRequest, isRefresh: Bool = false,expirationDate: Date? = nil, callback: @escaping CachyCallback) {
         guard let url = urlRequest.url else {
             return
         }
@@ -158,13 +159,15 @@ extension CachyLoader {
             guard let data = data else {
                 return
             }
-            CachyLoaderManager.shared.cache.setObject(data as NSData, forKey: fetchKey as NSString)
+            let object = CachyObject(value: data as NSData, key: fetchKey, expirationDate: expirationDate)
+            CachyLoaderManager.shared.cache.add(object: object)
+           // CachyLoaderManager.shared.cache.setObject(data as NSData, forKey: fetchKey as NSString)
             cacheCallback(data)
         })
         task?.resume()
     }
 
-    public func load(url: URL, isRefresh: Bool = false, callback: @escaping CachyCallback) {
+    public func load(url: URL, isRefresh: Bool = false,expirationDate: Date? = nil, callback: @escaping CachyCallback) {
         guard let fetchKey = self.cacheKeyFromUrl(url: url as URL) else {
             return
         }
@@ -198,7 +201,9 @@ extension CachyLoader {
             guard let data = data else {
                 return
             }
-            CachyLoaderManager.shared.cache.setObject(data as NSData, forKey: fetchKey as NSString)
+            let object = CachyObject(value: data as NSData, key: fetchKey, expirationDate: expirationDate)
+            CachyLoaderManager.shared.cache.add(object: object)
+           // CachyLoaderManager.shared.cache.setObject(data as NSData, forKey: fetchKey as NSString)
             cacheCallback(data)
         })
         task?.resume()

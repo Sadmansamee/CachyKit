@@ -58,8 +58,8 @@ public class Cachy: NSCache<AnyObject, AnyObject> {
         struct Static {
             static var instance = Cachy() {
                 didSet {
-                    Static.instance.countLimit = Cachy.elementsCount
-                    Static.instance.totalCostLimit = Cachy.elementsCostLimit
+                    Static.instance.countLimit = Cachy.countLimit
+                    Static.instance.totalCostLimit = Cachy.totalCostLimit
                 }
             }
         }
@@ -70,13 +70,12 @@ public class Cachy: NSCache<AnyObject, AnyObject> {
     // MARK: - Static properties
 
     /// Static property to store the count of element stored in the cache (by default it is 100)
-    public static var elementsCount = 100
+    public static var countLimit = 100
 
     /// Static property to store the cost limit of the cache (by default it is 0)
-    public static var elementsCostLimit = 0
+    public static var totalCostLimit = 0
 
-    /// Static property to indicate wether the cached objects will be added to the disk storage or not
-    public static var isOnlyInMemory = false
+    public static var isOnlyInMemory = true
 
     // MARK: - Public properties
 
@@ -104,6 +103,7 @@ public class Cachy: NSCache<AnyObject, AnyObject> {
         }
     }
 
+    /// Public method to return an object from the cache by a given key
     ///
     /// - Parameter key: The key of the searched object
     /// - Returns: The object found under the given key ot nil

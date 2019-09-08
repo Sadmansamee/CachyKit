@@ -12,8 +12,8 @@ class ViewController: UICollectionViewController {
     let cachy = CachyLoader()
 
     var boards: [Board] = [Board]()
-    let cellSizes: [CGFloat] = [240, 180, 200, 220,230]
-
+    let cellSizes: [CGFloat] = [180, 200, 220,240,260]
+    
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:
@@ -51,6 +51,7 @@ class ViewController: UICollectionViewController {
     }
 
     private func setUI() {
+        title = "Minderest"
         collectionView?.register(BoardCell.nib, forCellWithReuseIdentifier: BoardCell.id)
 
         collectionView?.backgroundColor = UIColor.white
@@ -59,6 +60,7 @@ class ViewController: UICollectionViewController {
             layout.delegate = self
         }
         collectionView?.addSubview(refreshControl)
+    
     }
 
     @objc private func handleRefresh(_ refreshControl: UIRefreshControl) {
