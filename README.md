@@ -12,7 +12,7 @@ Nice threadsafe On-Disk/On-Memory expirable cache extended from [NSCache](https:
 it, simply add the following line to your Podfile: 
 
 ```ruby
-pod 'Cachy'
+pod 'CachyKit'
 ```
 then run 
 
@@ -95,7 +95,7 @@ CachyLoaderManager.shared.configure(
 5. **.seconds** to set the expiry after some seconds 
 
 
-To cache using **CachyLoader** is the easiest way to do, but if you want manage your caching, sycning and threading **Cachy** also supports that.
+To cache using **CachyLoader** is the easiest way to do, but if you want manage your caching, sycning and threading **CachyKit** also supports that.
 
 ### Configuration
 
