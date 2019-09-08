@@ -224,7 +224,9 @@ public class Cachy: NSCache<AnyObject, AnyObject> {
             let paths = try fileManager.contentsOfDirectory(atPath: fileDir)
 
             for path in paths {
-                if let object = NSKeyedUnarchiver.unarchiveObject(withFile: fileDir + path) as? CachyObject {
+
+               if let nsdata = NSData(contentsOfFile: fileDir + path), let object = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(Data(referencing: nsdata)) as? CachyObject {
+              //  if let object = NSKeyedUnarchiver.unarchiveObject(withFile: fileDir + path) as? CachyObject {
                     if !object.isExpired {
                         add(object: object)
                     } else {
@@ -261,9 +263,10 @@ public class Cachy: NSCache<AnyObject, AnyObject> {
             let fileName = fileDirectory.appendingPathComponent(convertedFileName)
 
             if !fileManager.fileExists(atPath: fileName.absoluteString) || object.isUpdated {
-                let data = NSKeyedArchiver.archivedData(withRootObject: object)
+                //let data = NSKeyedArchiver.archivedData(withRootObject: object)
+                let data = try? NSKeyedArchiver.archivedData(withRootObject: object, requiringSecureCoding: true)
 
-                try? data.write(to: fileName)
+                try? data?.write(to: fileName)
             }
         } catch {
             throw Operations.saveFail
