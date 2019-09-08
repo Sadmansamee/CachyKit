@@ -32,7 +32,7 @@ $ pod install
 - [x] Fine control on cache behavior. Customizable expiration date and size limit.
 - [x] Force refresh if needed.
 - [x] Independent components. Use the Cachy or CachyLoader system separately as you need.
-- [x] Can save JSON, UIImage, ZIP or anything.
+- [x] Can save JSON, UIImage, ZIP or AnyObject.
 - [x] View extensions for `UIImageView`.
 - [x] Indicator while loading images.
 
