@@ -8,7 +8,7 @@ s.summary = "Caching Library written in Swift."
 s.requires_arc = true
 
 # 2
-s.version = "1.0.8"
+s.version = "1.0.9"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
@@ -24,7 +24,7 @@ s.source = { :git => "https://github.com/Sadmansamee/CachyKit.git",
              :tag => "#{s.version}" }
 
 # 8
-s.source_files = "Cachy/Classes/*.{swift}"
+s.source_files = "Sources/Cachy/*.{swift}"
 
 # 9
 #s.resources = "Cachy/Assets/*.{png,jpeg,jpg,storyboard,xib,xcassets}"

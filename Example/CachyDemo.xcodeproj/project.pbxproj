@@ -19,16 +19,16 @@
 		1A48F6C623236EDF00DDC56B /* BoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A48F6C423236EDF00DDC56B /* BoardCell.swift */; };
 		1A48F6C723236EDF00DDC56B /* BoardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A48F6C523236EDF00DDC56B /* BoardCell.xib */; };
 		1A48F6CA23236FE300DDC56B /* Extension+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A48F6C923236FE300DDC56B /* Extension+Cell.swift */; };
-		1A59BCD423237F55007DE126 /* CachyUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A59BCD023237F55007DE126 /* CachyUIImage.swift */; };
-		1A59BCD523237F55007DE126 /* CachyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A59BCD123237F55007DE126 /* CachyObject.swift */; };
-		1A59BCD623237F55007DE126 /* Cachy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A59BCD223237F55007DE126 /* Cachy.swift */; };
-		1A59BCD723237F55007DE126 /* CachyLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A59BCD323237F55007DE126 /* CachyLoader.swift */; };
 		1A790FAB231F7D2000C9DCC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A790FAA231F7D2000C9DCC9 /* AppDelegate.swift */; };
 		1A790FAD231F7D2000C9DCC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A790FAC231F7D2000C9DCC9 /* ViewController.swift */; };
 		1A790FB0231F7D2000C9DCC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A790FAE231F7D2000C9DCC9 /* Main.storyboard */; };
 		1A790FB2231F7D2200C9DCC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A790FB1231F7D2200C9DCC9 /* Assets.xcassets */; };
 		1A790FB5231F7D2200C9DCC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A790FB3231F7D2200C9DCC9 /* LaunchScreen.storyboard */; };
 		1A790FC0231F7D2200C9DCC9 /* CachyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A790FBF231F7D2200C9DCC9 /* CachyTests.swift */; };
+		1AC54BA323257B240079CA7D /* CachyObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC54B9F23257B240079CA7D /* CachyObject.swift */; };
+		1AC54BA423257B240079CA7D /* CachyUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC54BA023257B240079CA7D /* CachyUIImage.swift */; };
+		1AC54BA523257B240079CA7D /* CachyLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC54BA123257B240079CA7D /* CachyLoader.swift */; };
+		1AC54BA623257B240079CA7D /* Cachy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC54BA223257B240079CA7D /* Cachy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,10 +54,6 @@
 		1A48F6C423236EDF00DDC56B /* BoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCell.swift; sourceTree = "<group>"; };
 		1A48F6C523236EDF00DDC56B /* BoardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoardCell.xib; sourceTree = "<group>"; };
 		1A48F6C923236FE300DDC56B /* Extension+Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Cell.swift"; sourceTree = "<group>"; };
-		1A59BCD023237F55007DE126 /* CachyUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachyUIImage.swift; sourceTree = "<group>"; };
-		1A59BCD123237F55007DE126 /* CachyObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachyObject.swift; sourceTree = "<group>"; };
-		1A59BCD223237F55007DE126 /* Cachy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cachy.swift; sourceTree = "<group>"; };
-		1A59BCD323237F55007DE126 /* CachyLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachyLoader.swift; sourceTree = "<group>"; };
 		1A790FA7231F7D2000C9DCC9 /* CachyDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CachyDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A790FAA231F7D2000C9DCC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A790FAC231F7D2000C9DCC9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +68,10 @@
 		1A790FD0231FCF9300C9DCC9 /* HTTPURLResponse+CacheControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+CacheControl.swift"; sourceTree = "<group>"; };
 		1A790FD1231FCF9300C9DCC9 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		1A790FD2231FCF9300C9DCC9 /* HTTPURLResponse+Header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+Header.swift"; sourceTree = "<group>"; };
+		1AC54B9F23257B240079CA7D /* CachyObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachyObject.swift; sourceTree = "<group>"; };
+		1AC54BA023257B240079CA7D /* CachyUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachyUIImage.swift; sourceTree = "<group>"; };
+		1AC54BA123257B240079CA7D /* CachyLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachyLoader.swift; sourceTree = "<group>"; };
+		1AC54BA223257B240079CA7D /* Cachy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cachy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,18 +131,6 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		1A59BCCF23237F55007DE126 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				1A59BCD023237F55007DE126 /* CachyUIImage.swift */,
-				1A59BCD123237F55007DE126 /* CachyObject.swift */,
-				1A59BCD223237F55007DE126 /* Cachy.swift */,
-				1A59BCD323237F55007DE126 /* CachyLoader.swift */,
-			);
-			name = Classes;
-			path = ../../Cachy/Classes;
-			sourceTree = "<group>";
-		};
 		1A790F9E231F7D2000C9DCC9 = {
 			isa = PBXGroup;
 			children = (
@@ -164,7 +152,7 @@
 		1A790FA9231F7D2000C9DCC9 /* CachyDemo */ = {
 			isa = PBXGroup;
 			children = (
-				1A59BCCF23237F55007DE126 /* Classes */,
+				1AC54B9D23257B240079CA7D /* Sources */,
 				1A23DF2B23210D1A00C7338C /* Model */,
 				1A23DF2823210A3300C7338C /* Shared */,
 				1A790FCE231FCF7F00C9DCC9 /* Cache */,
@@ -199,6 +187,26 @@
 				1A790FD2231FCF9300C9DCC9 /* HTTPURLResponse+Header.swift */,
 			);
 			path = Cache;
+			sourceTree = "<group>";
+		};
+		1AC54B9D23257B240079CA7D /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1AC54B9E23257B240079CA7D /* Cachy */,
+			);
+			name = Sources;
+			path = ../../Sources;
+			sourceTree = "<group>";
+		};
+		1AC54B9E23257B240079CA7D /* Cachy */ = {
+			isa = PBXGroup;
+			children = (
+				1AC54B9F23257B240079CA7D /* CachyObject.swift */,
+				1AC54BA023257B240079CA7D /* CachyUIImage.swift */,
+				1AC54BA123257B240079CA7D /* CachyLoader.swift */,
+				1AC54BA223257B240079CA7D /* Cachy.swift */,
+			);
+			path = Cachy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,20 +314,20 @@
 				1A23DF3623210D1A00C7338C /* ProfileImage.swift in Sources */,
 				1A23DF3423210D1A00C7338C /* Categories.swift in Sources */,
 				1A23DF3223210D1A00C7338C /* Board.swift in Sources */,
-				1A59BCD623237F55007DE126 /* Cachy.swift in Sources */,
 				1A790FAD231F7D2000C9DCC9 /* ViewController.swift in Sources */,
 				1A23DF3323210D1A00C7338C /* Links.swift in Sources */,
+				1AC54BA323257B240079CA7D /* CachyObject.swift in Sources */,
 				1A23DF3723210D1A00C7338C /* Urls.swift in Sources */,
 				1A48F6C623236EDF00DDC56B /* BoardCell.swift in Sources */,
-				1A59BCD723237F55007DE126 /* CachyLoader.swift in Sources */,
-				1A59BCD423237F55007DE126 /* CachyUIImage.swift in Sources */,
 				1A48F6B7232153D100DDC56B /* DetailViewController.swift in Sources */,
 				1A23DF3523210D1A00C7338C /* User.swift in Sources */,
+				1AC54BA423257B240079CA7D /* CachyUIImage.swift in Sources */,
+				1AC54BA523257B240079CA7D /* CachyLoader.swift in Sources */,
 				1A23DF2A23210A3F00C7338C /* Constant.swift in Sources */,
 				1A48F6CA23236FE300DDC56B /* Extension+Cell.swift in Sources */,
 				1A48F6C12322AE2600DDC56B /* PinterestLayout.swift in Sources */,
+				1AC54BA623257B240079CA7D /* Cachy.swift in Sources */,
 				1A790FAB231F7D2000C9DCC9 /* AppDelegate.swift in Sources */,
-				1A59BCD523237F55007DE126 /* CachyObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
