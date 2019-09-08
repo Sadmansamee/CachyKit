@@ -8,7 +8,7 @@ s.summary = "Caching Library written in Swift."
 s.requires_arc = true
 
 # 2
-s.version = "1.0.6"
+s.version = "1.0.7"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
