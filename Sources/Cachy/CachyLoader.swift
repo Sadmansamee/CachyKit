@@ -27,13 +27,7 @@ open class CachyLoaderManager {
     fileprivate var sessionQueue: OperationQueue!
     fileprivate lazy var defaultSession: URLSession! = URLSession(configuration: self.sessionConfiguration, delegate: nil, delegateQueue: self.sessionQueue)
 
-//    fileprivate var memoryCapacity: Int!
-//    fileprivate var diskCapacity: Int!
-//    var maxConcurrentOperationCount: Int!
-//    fileprivate var timeoutIntervalForRequest: Double!
-//    fileprivate var diskPath: String!
-
-    func configure(memoryCapacity: Int = 30 * 1024 * 1024, diskCapacity: Int = 30 * 1024 * 1024, maxConcurrentOperationCount: Int = 10, timeoutIntervalForRequest: Double = 3, diskPath: String = "temp", expiryDate: ExpiryDate = .everyWeek, isOnlyInMemory: Bool = true) {
+    func configure(memoryCapacity: Int = 30 * 1024 * 1024, maxConcurrentOperationCount: Int = 10, timeoutIntervalForRequest: Double = 3, expiryDate: ExpiryDate = .everyWeek, isOnlyInMemory: Bool = true) {
         cache.totalCostLimit = memoryCapacity
         cache.expiration = expiryDate
         Cachy.isOnlyInMemory = isOnlyInMemory
@@ -45,14 +39,14 @@ open class CachyLoaderManager {
         sessionConfiguration.requestCachePolicy = .useProtocolCachePolicy
         sessionConfiguration.timeoutIntervalForRequest = timeoutIntervalForRequest
 
-        sessionConfiguration.urlCache = URLCache(memoryCapacity: memoryCapacity,
-                                                 diskCapacity: diskCapacity,
-                                                 diskPath: diskPath)
+//      sessionConfiguration.urlCache = URLCache(memoryCapacity: memoryCapacity,
+//                                                 diskCapacity: diskCapacity,
+//                                                 diskPath: diskPath)
     }
 
-    private init(memoryCapacity: Int = 30 * 1024 * 1024, diskCapacity: Int = 30 * 1024 * 1024, maxConcurrentOperationCount: Int = 10, timeoutIntervalForRequest: Double = 3, diskPath: String = "temp", expiryDate: ExpiryDate = .everyWeek) {
+    private init(memoryCapacity: Int = 30 * 1024 * 1024, maxConcurrentOperationCount: Int = 10, timeoutIntervalForRequest: Double = 3, expiryDate: ExpiryDate = .everyWeek) {
         cache = Cachy()
-        configure(memoryCapacity: memoryCapacity, diskCapacity: diskCapacity, maxConcurrentOperationCount: maxConcurrentOperationCount, timeoutIntervalForRequest: timeoutIntervalForRequest, diskPath: diskPath, expiryDate: expiryDate)
+        configure(memoryCapacity: memoryCapacity, maxConcurrentOperationCount: maxConcurrentOperationCount, timeoutIntervalForRequest: timeoutIntervalForRequest, expiryDate: expiryDate)
     }
 }
 
