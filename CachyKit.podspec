@@ -8,7 +8,7 @@ s.summary = "A Caching Library is written in Swift that can cache JSON, Image, Z
 s.requires_arc = true
 
 # 2
-s.version = "1.0.10"
+s.version = "1.0.11"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
