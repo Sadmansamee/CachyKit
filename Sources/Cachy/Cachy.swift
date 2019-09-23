@@ -2,7 +2,7 @@ import UIKit
 
 public enum Operations: Swift.Error {
     case fetchFail
-    case deletaFail
+    case deleteFail
     case saveFail
     case loadFail
     case folderCreation
