@@ -21,13 +21,4 @@ struct Urls: Codable {
     var raw: String?
     var full: String?
     var thumb: String?
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        small = try container.decodeIfPresent(String.self, forKey: .small)
-        regular = try container.decodeIfPresent(String.self, forKey: .regular)
-        raw = try container.decodeIfPresent(String.self, forKey: .raw)
-        full = try container.decodeIfPresent(String.self, forKey: .full)
-        thumb = try container.decodeIfPresent(String.self, forKey: .thumb)
-    }
 }

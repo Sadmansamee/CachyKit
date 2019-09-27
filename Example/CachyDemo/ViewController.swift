@@ -37,7 +37,7 @@ class ViewController: UICollectionViewController {
     private func fetchData(isRefresh _: Bool = false) {
         let url = URLRequest(url: URL(string: Constant.Url.base)!)
         cachy.loadWith(urlRequest: url) { [weak self] data, _ in
-       // cachy.load(url: URL(string: Constant.Url.base)!) { [weak self] data, _ in
+            // cachy.load(url: URL(string: Constant.Url.base)!) { [weak self] data, _ in
             let decoder = JSONDecoder()
             do {
                 let boards = try decoder.decode([Board].self, from: data)

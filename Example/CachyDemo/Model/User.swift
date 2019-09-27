@@ -21,13 +21,4 @@ struct User: Codable {
     var name: String?
     var profileImage: ProfileImage?
     var links: Links?
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        username = try container.decodeIfPresent(String.self, forKey: .username)
-        id = try container.decodeIfPresent(String.self, forKey: .id)
-        name = try container.decodeIfPresent(String.self, forKey: .name)
-        profileImage = try container.decodeIfPresent(ProfileImage.self, forKey: .profileImage)
-        links = try container.decodeIfPresent(Links.self, forKey: .links)
-    }
 }

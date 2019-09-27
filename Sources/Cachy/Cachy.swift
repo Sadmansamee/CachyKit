@@ -99,7 +99,6 @@ public class Cachy: NSCache<AnyObject, AnyObject> {
         }
     }
 
-   
     open func get<T>(forKey key: String) -> T? {
         let objects = object(forKey: cacheKey as AnyObject) as? [CachyObject]
 
@@ -244,7 +243,6 @@ public class Cachy: NSCache<AnyObject, AnyObject> {
         }
     }
 
-  
     private func save(object: CachyObject) throws {
         let fileManager = FileManager.default
 
@@ -287,7 +285,6 @@ public class Cachy: NSCache<AnyObject, AnyObject> {
         try? load()
     }
 
- 
     private func convertToBase64(withString: String) -> String {
         return Data(withString.utf8).base64EncodedString()
     }

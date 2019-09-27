@@ -15,10 +15,4 @@ struct Links: Codable {
 
     var photos: String?
     // var selfValue: String?
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        photos = try container.decodeIfPresent(String.self, forKey: .photos)
-        // selfValue = try container.decodeIfPresent(String.self, forKey: .selfKeyselfKeyb)
-    }
 }

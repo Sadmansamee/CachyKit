@@ -19,12 +19,4 @@ struct Categories: Codable {
     var id: Int?
     var photoCount: Int?
     var links: Links?
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        title = try container.decodeIfPresent(String.self, forKey: .title)
-        id = try container.decodeIfPresent(Int.self, forKey: .id)
-        photoCount = try container.decodeIfPresent(Int.self, forKey: .photoCount)
-        links = try container.decodeIfPresent(Links.self, forKey: .links)
-    }
 }

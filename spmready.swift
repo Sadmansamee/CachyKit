@@ -10,7 +10,6 @@ class Pod {
     let name: String
     var repo: String?
     var spmready: Bool = false
-
 }
 
 extension Pod {
@@ -22,7 +21,7 @@ extension Pod {
     }
 
     func format() -> String {
-        "\(self.readyOrNot()) | \(self.name) : \(self.repo ?? "not found")"
+        "\(readyOrNot()) | \(name) : \(repo ?? "not found")"
     }
 }
 
@@ -44,7 +43,7 @@ extension NSRegularExpression {
 }
 
 func fetchPods(_ path: String) -> [Pod]? {
-    var pods:[Pod] = []
+    var pods: [Pod] = []
     do {
         // Get the contents
         let contents = try String(contentsOfFile: path, encoding: .utf8)
@@ -52,25 +51,21 @@ func fetchPods(_ path: String) -> [Pod]? {
         for line in lines {
             let regex = NSRegularExpression("pod '([A-Za-z0-9-]*)'")
 
-            if  let match = regex.matches(String(line)), let podNameRange = Range(match.range(at: 1), in: line) {
+            if let match = regex.matches(String(line)), let podNameRange = Range(match.range(at: 1), in: line) {
                 let podName = line[podNameRange]
                 pods.append(Pod(name: String(podName)))
-
             }
         }
-        //sprint(contents)
-    }
-    catch {
+        // sprint(contents)
+    } catch {
         print("Failed to open Podfile at \(path)")
         print("make sure the file exists")
         return nil
     }
     return pods
-
 }
 
 func fetchUrl(pod: String) -> String {
-
     let semaphore = DispatchSemaphore(value: 0)
 
     let path = "https://cocoapods.org/pods/\(pod)"
@@ -81,7 +76,7 @@ func fetchUrl(pod: String) -> String {
         return ""
     }
 
-    let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+    let task = URLSession.shared.dataTask(with: url) { data, _, _ in
         if let data = data {
             result = String(data: data, encoding: .utf8) ?? ""
         }
@@ -95,7 +90,6 @@ func fetchUrl(pod: String) -> String {
     return result
 }
 
-
 func isSpmReady(pod: Pod) -> Bool {
     guard let repo = pod.repo else {
         return false
@@ -107,7 +101,7 @@ func isSpmReady(pod: Pod) -> Bool {
     let semaphore = DispatchSemaphore(value: 0)
     let url = URL(string: spmUrl)!
 
-    let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+    let task = URLSession.shared.dataTask(with: url) { _, response, _ in
         if let httpResponse = response as? HTTPURLResponse {
             if httpResponse.statusCode == 200 {
                 result = true
@@ -128,7 +122,7 @@ func fetchRepoOnline(podName: String) -> String? {
 
     let regex = NSRegularExpression("(((https?):((//)|(\\\\))+[\\w\\d:#@%/;$()~_?\\+-=\\\\.&]*))\">GitHub Repo</a>")
 
-    if  let match = regex.matches(String(page)) {
+    if let match = regex.matches(String(page)) {
         if let podNameRange = Range(match.range(at: 1), in: page) {
             let repo = page[podNameRange]
             return String(repo)
@@ -137,7 +131,6 @@ func fetchRepoOnline(podName: String) -> String? {
 
     return nil
 }
-
 
 let path: String
 
@@ -149,9 +142,7 @@ if CommandLine.arguments.count == 2 {
     path = arg.prefix(upTo: arg.lastIndex(of: "/")!) + "/Podfile"
 }
 
-
 // Set the file path
-
 
 guard let pods = fetchPods(path) else {
     exit(1)
@@ -178,6 +169,3 @@ if ready == pods.count {
     print("Sorry 😢 - ✅ \(ready) | ❌ \(notReady)")
     print("Help to improve SPM capablility by opening an issue or contribute via PR")
 }
-
-
-
