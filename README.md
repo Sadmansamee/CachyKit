@@ -38,6 +38,11 @@ $ pod install
 
 
 ## Usage
+
+```swift
+import CachyKit
+```
+
 If you want to download and cache a file(JSON, ZIP, UIImage or any type) then simply call with a url
 
 ```swift
