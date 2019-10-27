@@ -37,15 +37,14 @@ class ViewController: UICollectionViewController {
     private func fetchData(isRefresh _: Bool = false) {
         let url = URLRequest(url: URL(string: Constant.Url.base)!)
         cachy.loadWith(urlRequest: url) { [weak self] data, _ in
-            // cachy.load(url: URL(string: Constant.Url.base)!) { [weak self] data, _ in
             let decoder = JSONDecoder()
             do {
-                let boards = try decoder.decode([Board].self, from: data)
-                if let _self = self {
-                    _self.boards = boards
-                    _self.collectionView?.reloadData()
+                guard let self = self  else {
+                    return
                 }
-
+                let boards = try decoder.decode([Board].self, from: data)
+                self.boards = boards
+                self.collectionView?.reloadData()
             } catch {
                 debugPrint("Error occurred")
             }
@@ -75,8 +74,10 @@ extension ViewController {
         return boards.count
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BoardCell.id, for: indexPath) as? BoardCell else { return UICollectionViewCell() }
+    override func collectionView(_ collectionView: UICollectionView,
+                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BoardCell.id,
+                                                            for: indexPath) as? BoardCell else { return UICollectionViewCell() }
 
         cell.board = boards[indexPath.item]
 

@@ -14,17 +14,17 @@ public typealias CachyImageCallback = (UIImage, URL) -> Void
 public typealias CachyCallbackList = [CachyCallback]
 
 open class CachyLoaderManager {
-    static let shared: CachyLoaderManager = {
+    public static let shared: CachyLoaderManager = {
         let instance = CachyLoaderManager()
         return instance
     }()
 
     fileprivate var cache: Cachy
-    fileprivate var fetchList: [String: CachyCallbackList] = [:]
-    fileprivate var fetchListOperationQueue: DispatchQueue = DispatchQueue(label: "cachy.awesome.fetchlist_queue", attributes: DispatchQueue.Attributes.concurrent)
+    private var fetchList: [String: CachyCallbackList] = [:]
+    private var fetchListOperationQueue: DispatchQueue = DispatchQueue(label: "cachy.awesome.fetchlist_queue", attributes: DispatchQueue.Attributes.concurrent)
     // fileprivate var imageDecodeQueue: DispatchQueue = DispatchQueue(label: "cachy.awesome.decode_queue", attributes: DispatchQueue.Attributes.concurrent)
-    fileprivate var sessionConfiguration: URLSessionConfiguration!
-    fileprivate var sessionQueue: OperationQueue!
+    private var sessionConfiguration: URLSessionConfiguration!
+    private var sessionQueue: OperationQueue!
     fileprivate lazy var defaultSession: URLSession! = URLSession(configuration: self.sessionConfiguration, delegate: nil, delegateQueue: self.sessionQueue)
 
     func configure(memoryCapacity: Int = 30 * 1024 * 1024, maxConcurrentOperationCount: Int = 10, timeoutIntervalForRequest: Double = 3, expiryDate: ExpiryDate = .everyWeek, isOnlyInMemory: Bool = true) {

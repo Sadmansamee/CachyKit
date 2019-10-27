@@ -91,13 +91,11 @@ It will download, cache and load UIImage into your UIImageView
 // You may set expiry date for all the cache object by setting expiryDate
 
 CachyLoaderManager.shared.configure(
-	memoryCapacity: 1020, 
-	diskCapacity: 2024, 
-	maxConcurrentOperationCount: 10, 
-	timeoutIntervalForRequest: 3,
-	diskPath: "temp", 
-	expiryDate: .weekly, 
-	isOnlyInMemory: true
+     memoryCapacity: 1020,
+     maxConcurrentOperationCount: 10,
+     timeoutIntervalForRequest: 3,
+     expiryDate: ExpiryDate.everyWeek,
+     isOnlyInMemory: true
 )
 ```
 
