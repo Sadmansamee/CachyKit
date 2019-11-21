@@ -2,7 +2,7 @@
 
 ## Description
  
-Nice threadsafe expirable cache management. Supports fetching from server, single object expire date, UIImageView loading etc.
+Nice threadsafe expirable cache management that can cache any object. Supports fetching from server, single object expire date, UIImageView loading etc.
 
 ## Installation
 
@@ -31,7 +31,7 @@ $ pod install
 - [x] Multiple-layer hybrid cache for both memory and disk.
 - [x] Fine control on cache behavior. Customizable expiration date and size limit.
 - [x] Force refresh if needed.
-- [x] Independent components. Use the Cachy or CachyLoader system separately as you need.
+- [x] Independent components. Use the [Cachy](https://github.com/Sadmansamee/CachyKit/blob/master/Sources/Cachy/Cachy.swift) or [CachyLoader](https://github.com/Sadmansamee/CachyKit/blob/master/Sources/Cachy/CachyLoader.swift) system separately as you need.
 - [x] Can save JSON, UIImage, ZIP or AnyObject.
 - [x] View extensions for `UIImageView`.
 - [x] Indicator while loading images.
