@@ -1,8 +1,8 @@
 # Cachy
-
+[![codebeat badge](https://codebeat.co/badges/de5bf12e-9682-4d1e-85ce-fbc89a738f3d)](https://codebeat.co/projects/github-com-sadmansamee-cachykit-master)
 ## Description
  
-Nice threadsafe expirable cache management. Supports fetching from server, single object expire date, UIImageView loading etc.
+Nice threadsafe expirable cache management that can cache any object. Supports fetching from server, single object expire date, UIImageView loading etc.
 
 ## Installation
 
@@ -31,7 +31,7 @@ $ pod install
 - [x] Multiple-layer hybrid cache for both memory and disk.
 - [x] Fine control on cache behavior. Customizable expiration date and size limit.
 - [x] Force refresh if needed.
-- [x] Independent components. Use the Cachy or CachyLoader system separately as you need.
+- [x] Independent components. Use the [Cachy](https://github.com/Sadmansamee/CachyKit/blob/master/Sources/Cachy/Cachy.swift) or [CachyLoader](https://github.com/Sadmansamee/CachyKit/blob/master/Sources/Cachy/CachyLoader.swift) system separately as you need.
 - [x] Can save JSON, UIImage, ZIP or AnyObject.
 - [x] View extensions for `UIImageView`.
 - [x] Indicator while loading images.
@@ -153,7 +153,7 @@ let string: String? = Cachy.shared.get(forKey: "key")
 
 ## Contact
 
-Follow and contact me on [Twitter](http://twitter.com/sameesadman). If you find an issue, just [open a ticket](https://github.com/sadmansamee/Cachy/issues/new). Pull requests are warmly welcome as well.
+Follow and contact me on [LinkedIn](https://www.linkedin.com/in/sadmansamee/). If you find an issue, just [open a ticket](https://github.com/sadmansamee/Cachy/issues/new). Pull requests are warmly welcome as well.
 
 ## Contribution
 
