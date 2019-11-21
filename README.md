@@ -13,7 +13,7 @@ Nice threadsafe expirable cache management that can cache any object. Supports f
 
 ### Cocoapods
 
-**CachyKit** is available through [CocoaPods](http://cocoapods.org). To install
+[**CachyKit**](http://cocoapods.org/pods/CachyKit) is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile: 
 
 ```ruby
