@@ -124,7 +124,10 @@ public class Cachy: NSCache<AnyObject, AnyObject> {
         let objects = object(forKey: cacheKey as AnyObject) as? [CachyObject] ?? [CachyObject]()
         let fileManager = FileManager.default
         do {
-            let cacheDirectory = try fileManager.url(for: .cachesDirectory, in: .allDomainsMask, appropriateFor: nil, create: false)
+            let cacheDirectory = try fileManager.url(for: .cachesDirectory,
+                                                     in: .allDomainsMask,
+                                                     appropriateFor: nil,
+                                                     create: false)
             let fileDirectory = cacheDirectory.appendingPathComponent("spacekit")
 
             var fileDir = fileDirectory.absoluteString
@@ -221,7 +224,8 @@ public class Cachy: NSCache<AnyObject, AnyObject> {
 //                }
 
                 if #available(iOS 11.0, *) {
-                    if let nsdata = NSData(contentsOfFile: fileDir + path), let object = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(Data(referencing: nsdata)) as? CachyObject {
+                    if let nsdata = NSData(contentsOfFile: fileDir + path),
+                        let object = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(Data(referencing: nsdata)) as? CachyObject {
                         if !object.isExpired {
                             add(object: object)
                         } else {
