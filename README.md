@@ -1,5 +1,9 @@
 # Cachy
 [![codebeat badge](https://codebeat.co/badges/de5bf12e-9682-4d1e-85ce-fbc89a738f3d)](https://codebeat.co/projects/github-com-sadmansamee-cachykit-master)
+
+<p align="center">
+  <img width="400"  src="cachy.png">
+</p>
 ## Description
  
 Nice threadsafe expirable cache management that can cache any object. Supports fetching from server, single object expire date, UIImageView loading etc.
