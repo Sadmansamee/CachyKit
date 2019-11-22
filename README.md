@@ -1,5 +1,5 @@
 # Cachy
-[![codebeat badge](https://codebeat.co/badges/de5bf12e-9682-4d1e-85ce-fbc89a738f3d)](https://codebeat.co/projects/github-com-sadmansamee-cachykit-master)
+[![codebeat badge](https://codebeat.co/badges/de5bf12e-9682-4d1e-85ce-fbc89a738f3d)](https://codebeat.co/projects/github-com-sadmansamee-cachykit-master) ![](https://img.shields.io/cocoapods/v/CachyKit.svg?style=flat)
 
 <p align="center">
   <img width="400"  src="cachy.png">
