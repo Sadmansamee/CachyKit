@@ -33,10 +33,13 @@ open class CachyLoaderManager {
                           maxConcurrentOperationCount: Int = 10,
                           timeoutIntervalForRequest: Double = 3,
                           expiryDate: ExpiryDate = .everyWeek,
-                          isOnlyInMemory: Bool = true) {
+                          isOnlyInMemory: Bool = true,
+                          isSupportingSecureCodingSaving: Bool = true) {
         cache.totalCostLimit = memoryCapacity
         cache.expiration = expiryDate
+        
         Cachy.isOnlyInMemory = isOnlyInMemory
+        Cachy.isSupportingSecureCodingSaving = isSupportingSecureCodingSaving
         
         sessionQueue = OperationQueue()
         sessionQueue.maxConcurrentOperationCount = maxConcurrentOperationCount

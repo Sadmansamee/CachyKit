@@ -71,7 +71,11 @@ public class Cachy: NSCache<AnyObject, AnyObject> {
     /// Static property to store the cost limit of the cache (by default it is 0)
     public static var totalCostLimit = 0
 
+    /// Caching only on memory, otherwise will try to cache to Disk too
     public static var isOnlyInMemory = true
+    
+    /// For those objects not conforming to `NSSecureCoding`, set this variable to `false`
+    public static var isSupportingSecureCodingSaving = true
 
     // MARK: - Public properties
 
@@ -269,9 +273,8 @@ public class Cachy: NSCache<AnyObject, AnyObject> {
             if !fileManager.fileExists(atPath: fileName.absoluteString) || object.isUpdated {
                 //  let data = NSKeyedArchiver.archivedData(withRootObject: object)
                 //  try? data.write(to: fileName)
-
                 if #available(iOS 11.0, *) {
-                    let data = try? NSKeyedArchiver.archivedData(withRootObject: object, requiringSecureCoding: true)
+                    let data = try? NSKeyedArchiver.archivedData(withRootObject: object, requiringSecureCoding: Cachy.isSupportingSecureCodingSaving)
                     try? data?.write(to: fileName)
                 } else {
                     let data = try? NSKeyedArchiver.archivedData(withRootObject: object)
