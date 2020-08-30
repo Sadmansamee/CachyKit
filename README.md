@@ -53,7 +53,7 @@ If you want to download and cache a file(JSON, ZIP, UIImage or any type) then si
 ```swift
  let cachy = CachyLoader()
 
- cachy.load(url: URL(string: "http://your_url_here")!) { [weak self] data, _ in
+ cachy.loadWithURL(URL(string: "http://your_url_here")!) { [weak self] data, _ in
     // Do whatever you need with the data object
  }
 ```
@@ -63,8 +63,8 @@ You can also cache with **URLRequest**
 ```swift
 let cachy = CachyLoader()
 
-let url = URLRequest(url: URL(string: "http://your_url_here")!)
-cachy.loadWith(urlRequest: url) { [weak self] data, _ in
+let request = URLRequest(url: URL(string: "http://your_url_here")!)
+cachy.loadWithURLRequest(request) { [weak self] data, _ in
     // Do whatever you need with the data object
  }
 ```
@@ -77,7 +77,7 @@ let cachy = CachyLoader()
 //(optional) if isRefresh = true it will forcefully refresh data from remote server
 //(optional) you can set **expirationDate** according to your need
 
-cachy.load(url: URL(string: "http://your_url_here")!,isRefresh = false,expirationDate = ExpiryDate.everyDay.expiryDate()) { [weak self] data, _ in
+cachy.loadWithURL(URL(string: "http://your_url_here")!,isRefresh = false,expirationDate = ExpiryDate.everyDay.expiryDate()) { [weak self] data, _ in
      // Do whatever you need with the data object
   }
 ```
@@ -99,13 +99,15 @@ It will download, cache and load UIImage into your UIImageView
 // Here if you want set how much much memory/disk should use set memoryCapacity, diskCapacity
 // To cache only on memory set isOnlyInMemory which is true by default
 // You may set expiry date for all the cache object by setting expiryDate
+// Your objects may not be conforming to `NSSecureCoding`, set this variable to `false`
 
 CachyLoaderManager.shared.configure(
      memoryCapacity: 1020,
      maxConcurrentOperationCount: 10,
      timeoutIntervalForRequest: 3,
      expiryDate: ExpiryDate.everyWeek,
-     isOnlyInMemory: true
+     isOnlyInMemory: true,
+     isSupportingSecureCodingSaving: false
 )
 ```
 
