@@ -29,7 +29,7 @@ open class CachyLoaderManager {
         self.sessionConfiguration, delegate: nil,
                                                                   delegateQueue: self.sessionQueue)
 
-    func configure(memoryCapacity: Int = 30 * 1024 * 1024,
+    public func configure(memoryCapacity: Int = 30 * 1024 * 1024,
                    maxConcurrentOperationCount: Int = 10,
                    timeoutIntervalForRequest: Double = 3,
                    expiryDate: ExpiryDate = .everyWeek,
