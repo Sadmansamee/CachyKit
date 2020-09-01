@@ -23,7 +23,7 @@ class BoardCell: UICollectionViewCell {
         didSet {
             if let board = board, let urls = board.urls, let thumb = urls.regular, let url = URL(string: thumb) {
                 let request = URLRequest(url: url)
-                cachy.loadWith(urlRequest: request) { [weak self] data, _ in
+                cachy.loadWithURLRequest(request) { [weak self] data, _ in
                     self?.imageView.image = UIImage(data: data, scale: 1.0)
                 }
                 // imageView.cachyImageLoad(url, isShowLoading: true, completionBlock: { _, _ in })
