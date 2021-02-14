@@ -33,7 +33,7 @@ open class CachyLoaderManager {
                           maxConcurrentOperationCount: Int = 10,
                           timeoutIntervalForRequest: Double = 3,
                           expiryDate: ExpiryDate = .everyWeek,
-                          isOnlyInMemory: Bool = true,
+                          isOnlyInMemory: Bool = false,
                           isSupportingSecureCodingSaving: Bool = true) {
         cache.totalCostLimit = memoryCapacity
         cache.expiration = expiryDate
@@ -97,8 +97,8 @@ extension CachyLoaderManager {
 }
 
 extension CachyLoaderManager {
-    public func clearCache() {
-        cache.removeAllObjects()
+    public func clear() {
+        cache.clear()
         sessionConfiguration.urlCache?.removeAllCachedResponses()
     }
 }
@@ -121,7 +121,6 @@ extension CachyLoader {
     
     fileprivate func dataFromFastCache(cacheKey: String) -> Data? {
         return CachyLoaderManager.shared.cache.get(forKey: cacheKey)
-        // return CachyLoaderManager.shared.cache.object(forKey: cacheKey as NSString) as? Data
     }
     
     public func loadWithURLRequest(_ urlRequest: URLRequest,

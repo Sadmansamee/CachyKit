@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9oG-hp-eWx">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9oG-hp-eWx">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,15 +15,15 @@
                     <view key="view" contentMode="scaleToFill" id="6RK-lh-uaB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="sVs-sp-PCP"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X4v-FY-xZO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2463.768115942029" y="-47.544642857142854"/>
         </scene>
-        <!--View Controller-->
+        <!--Title-->
         <scene sceneID="Rom-YE-bNi">
             <objects>
                 <collectionViewController storyboardIdentifier="ViewController" id="Hdc-Zt-IY8" customClass="ViewController" customModule="CachyDemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -40,7 +38,13 @@
                             <outlet property="delegate" destination="Hdc-Zt-IY8" id="iBJ-U9-zsK"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="4uc-gB-RFy"/>
+                    <navigationItem key="navigationItem" title="Title" id="e4x-gL-0kG">
+                        <barButtonItem key="rightBarButtonItem" title="Clear" id="mJR-du-NOy">
+                            <connections>
+                                <action selector="actionClear:" destination="Hdc-Zt-IY8" id="Svs-CK-1Qt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zF0-T9-cNP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -18,19 +18,14 @@ public enum ExpiryDate {
     public var date: Date {
         switch self {
         case .never:
-
             return Date.distantFuture
         case .everyDay:
-
             return endOfDay
         case .everyWeek:
-
             return date(afterDays: 7)
         case .everyMonth:
-
             return date(afterDays: 30)
         case let .seconds(seconds):
-
             return Date().addingTimeInterval(seconds)
         }
     }
@@ -72,7 +67,7 @@ public class Cachy: NSCache<AnyObject, AnyObject> {
     public static var totalCostLimit = 0
 
     /// Caching only on memory, otherwise will try to cache to Disk too
-    public static var isOnlyInMemory = true
+    public static var isOnlyInMemory = false
     
     /// For those objects not conforming to `NSSecureCoding`, set this variable to `false`
     public static var isSupportingSecureCodingSaving = true
@@ -132,7 +127,7 @@ public class Cachy: NSCache<AnyObject, AnyObject> {
                                                      in: .allDomainsMask,
                                                      appropriateFor: nil,
                                                      create: false)
-            let fileDirectory = cacheDirectory.appendingPathComponent("spacekit")
+            let fileDirectory = cacheDirectory.appendingPathComponent("cachykit")
 
             var fileDir = fileDirectory.absoluteString
             let range = fileDir.startIndex ..< fileDir.index(fileDir.startIndex, offsetBy: 7)
@@ -200,7 +195,11 @@ public class Cachy: NSCache<AnyObject, AnyObject> {
         setObject(object, forKey: cacheKey as AnyObject)
         lock.unlock()
     }
-
+    
+    open func clear() {
+        self.removeAllObjects()
+    }
+    
     /// Public method to load all object from disk to memory
     ///
     /// - Throws: An error if such occures during load
@@ -208,7 +207,7 @@ public class Cachy: NSCache<AnyObject, AnyObject> {
         let fileManager = FileManager.default
         do {
             let cacheDirectory = try fileManager.url(for: .cachesDirectory, in: .allDomainsMask, appropriateFor: nil, create: false)
-            let fileDirectory = cacheDirectory.appendingPathComponent("spacekit")
+            let fileDirectory = cacheDirectory.appendingPathComponent("cachykit")
 
             var fileDir = fileDirectory.absoluteString
             let range = fileDir.startIndex ..< fileDir.index(fileDir.startIndex, offsetBy: 7)
@@ -219,13 +218,6 @@ public class Cachy: NSCache<AnyObject, AnyObject> {
             let paths = try fileManager.contentsOfDirectory(atPath: fileDir)
 
             for path in paths {
-//                if let object = NSKeyedUnarchiver.unarchiveObject(withFile: fileDir + path) as? CachyObject {
-//                    if !object.isExpired {
-//                        add(object: object)
-//                    } else {
-//                        try? fileManager.removeItem(atPath: fileDir + path)
-//                    }
-//                }
 
                 if #available(iOS 11.0, *) {
                     if let nsdata = NSData(contentsOfFile: fileDir + path),
@@ -256,7 +248,7 @@ public class Cachy: NSCache<AnyObject, AnyObject> {
 
         do {
             let cacheDirectory = try fileManager.url(for: .cachesDirectory, in: .allDomainsMask, appropriateFor: nil, create: false)
-            let fileDirectory = cacheDirectory.appendingPathComponent("spacekit")
+            let fileDirectory = cacheDirectory.appendingPathComponent("cachykit")
 
             var fileDir = fileDirectory.absoluteString
             let range = fileDir.startIndex ..< fileDir.index(fileDir.startIndex, offsetBy: 7)
@@ -277,8 +269,8 @@ public class Cachy: NSCache<AnyObject, AnyObject> {
                     let data = try? NSKeyedArchiver.archivedData(withRootObject: object, requiringSecureCoding: Cachy.isSupportingSecureCodingSaving)
                     try? data?.write(to: fileName)
                 } else {
-                    let data = try? NSKeyedArchiver.archivedData(withRootObject: object)
-                    try? data?.write(to: fileName)
+                    let data = NSKeyedArchiver.archivedData(withRootObject: object)
+                    try? data.write(to: fileName)
                 }
             }
         } catch {

@@ -64,6 +64,9 @@ class ViewController: UICollectionViewController {
         collectionView?.addSubview(refreshControl)
     }
 
+    @IBAction func actionClear(_ sender: Any) {
+        CachyLoaderManager.shared.clear()
+    }
     @objc private func handleRefresh(_ refreshControl: UIRefreshControl) {
         fetchData(isRefresh: true)
         refreshControl.endRefreshing()
