@@ -68,10 +68,6 @@
 		1A790FBB231F7D2200C9DCC9 /* CachyDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CachyDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A790FBF231F7D2200C9DCC9 /* CachyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachyTests.swift; sourceTree = "<group>"; };
 		1A790FC1231F7D2200C9DCC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1A790FCF231FCF9200C9DCC9 /* CacheExcludable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheExcludable.swift; sourceTree = "<group>"; };
-		1A790FD0231FCF9300C9DCC9 /* HTTPURLResponse+CacheControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+CacheControl.swift"; sourceTree = "<group>"; };
-		1A790FD1231FCF9300C9DCC9 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
-		1A790FD2231FCF9300C9DCC9 /* HTTPURLResponse+Header.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse+Header.swift"; sourceTree = "<group>"; };
 		1AC54B9F23257B240079CA7D /* CachyObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachyObject.swift; sourceTree = "<group>"; };
 		1AC54BA023257B240079CA7D /* CachyUIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachyUIImage.swift; sourceTree = "<group>"; };
 		1AC54BA123257B240079CA7D /* CachyLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachyLoader.swift; sourceTree = "<group>"; };
@@ -176,7 +172,6 @@
 				1AC54B9D23257B240079CA7D /* Sources */,
 				1A23DF2B23210D1A00C7338C /* Model */,
 				1A23DF2823210A3300C7338C /* Shared */,
-				1A790FCE231FCF7F00C9DCC9 /* Cache */,
 				1A790FAA231F7D2000C9DCC9 /* AppDelegate.swift */,
 				1A790FAC231F7D2000C9DCC9 /* ViewController.swift */,
 				1A790FAE231F7D2000C9DCC9 /* Main.storyboard */,
@@ -197,17 +192,6 @@
 				1A790FC1231F7D2200C9DCC9 /* Info.plist */,
 			);
 			path = CachyTests;
-			sourceTree = "<group>";
-		};
-		1A790FCE231FCF7F00C9DCC9 /* Cache */ = {
-			isa = PBXGroup;
-			children = (
-				1A790FD1231FCF9300C9DCC9 /* Cache.swift */,
-				1A790FCF231FCF9200C9DCC9 /* CacheExcludable.swift */,
-				1A790FD0231FCF9300C9DCC9 /* HTTPURLResponse+CacheControl.swift */,
-				1A790FD2231FCF9300C9DCC9 /* HTTPURLResponse+Header.swift */,
-			);
-			path = Cache;
 			sourceTree = "<group>";
 		};
 		1AC54B9D23257B240079CA7D /* Sources */ = {
@@ -252,6 +236,7 @@
 				1A790FA3231F7D2000C9DCC9 /* Sources */,
 				1A790FA4231F7D2000C9DCC9 /* Frameworks */,
 				1A790FA5231F7D2000C9DCC9 /* Resources */,
+				1AA7D77925D8DF3D001E2DF4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -288,7 +273,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = "sadman samee";
 				TargetAttributes = {
 					1A790FA6231F7D2000C9DCC9 = {
@@ -341,6 +326,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1AA7D77925D8DF3D001E2DF4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		33E2B6EADD4600E74B2187C3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -476,6 +478,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -537,6 +540,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

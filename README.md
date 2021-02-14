@@ -82,7 +82,11 @@ cachy.loadWithURL(URL(string: "http://your_url_here")!,isRefresh = false,expirat
   }
 ```
 
+**Clear** all cache
 
+```swift
+CachyLoaderManager.shared.clear()
+```
 
 **CachyLoader** has also UIImageView extension.
 
