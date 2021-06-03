@@ -164,7 +164,7 @@ let string: String? = Cachy.shared.get(forKey: "key")
 
 ## Contact
 
-Follow and contact me on [LinkedIn](https://www.linkedin.com/in/sadmansamee/). If you find an issue, just [open a ticket](https://github.com/sadmansamee/Cachy/issues/new). Pull requests are warmly welcome as well.
+Follow and contact me on [Twitter](https://twitter.com/SameeSadman) or [LinkedIn](https://www.linkedin.com/in/sadmansamee/). If you find an issue, just [open a ticket](https://github.com/sadmansamee/Cachy/issues/new). Pull requests are warmly welcome as well.
 
 ## Contribution
 
